@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TM ZAVRENO | Wear Your Identity</title>
+<style>
+:root{--ink:#171717;--gold:#b88a32;--cream:#f7f1e7;--muted:#777}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;color:var(--ink);background:#fff}
+.top{background:#111;color:#fff;text-align:center;padding:9px;font-size:13px}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 5%;gap:16px;flex-wrap:wrap}
+.logo{font-size:28px;font-weight:800;letter-spacing:1px}.logo span{color:var(--gold)}.tag{font-family:Georgia,serif;font-style:italic;font-size:13px}
+nav{display:flex;gap:22px;justify-content:center;padding:13px;background:#fafafa;border-block:1px solid #eee;flex-wrap:wrap}
+nav a{color:#222;text-decoration:none;font-size:14px}
+.hero{background:linear-gradient(110deg,#eee2cf,#fbf8f2);padding:62px 7%;text-align:center}
+.hero h1{font-size:clamp(34px,6vw,64px);margin:0 0 8px}.hero p{font-size:18px}.btn{background:var(--gold);color:white;border:0;border-radius:5px;padding:12px 20px;cursor:pointer;font-weight:bold}
+.wrap{max-width:1100px;margin:auto;padding:34px 5%}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center;color:#444;font-size:14px}
+h2{text-align:center;margin:10px 0 25px}.filters{text-align:center;margin-bottom:20px}.filters button{margin:4px;background:#fff;border:1px solid #ddd;padding:9px 16px;border-radius:20px;cursor:pointer}.filters button.active{background:#171717;color:white}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{border:1px solid #eee;border-radius:10px;overflow:hidden}.photo{height:190px;background:linear-gradient(135deg,#eee,#d9c9b3);display:grid;place-items:center;color:#555;text-align:center;padding:12px}.info{padding:14px}.info h3{margin:0 0 7px}.price{font-weight:bold;color:#8d641e;margin:8px 0}.info button{width:100%}
+.cart{background:#faf8f4;border-radius:10px;padding:18px;margin-top:32px}.cartrow{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #ddd;padding:9px 0}.cartrow button{border:0;background:none;color:#a22;cursor:pointer}
+form{display:grid;gap:10px;margin-top:14px}input,textarea{width:100%;padding:12px;border:1px solid #ccc;border-radius:5px;font:inherit}
+footer{text-align:center;background:#171717;color:#fff;padding:25px;margin-top:35px;font-size:14px}
+@media(max-width:700px){.products{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:1fr}.photo{height:145px}}
+@media(max-width:430px){.products{grid-template-columns:1fr}header{justify-content:center;text-align:center}}
+</style>
+</head>
+<body>
+<div class="top">TM ZAVRENO · Wear Your Identity.</div>
+<header><div><div class="logo">TM <span>ZAVRENO</span></div><div class="tag">Wear Your Identity.</div></div><button class="btn" onclick="document.getElementById('cart').scrollIntoView({behavior:'smooth'})">কার্ট (<b id="count">0</b>)</button></header>
+<nav><a href="#">হোম</a><a href="#products">পুরুষ</a><a href="#products">নারী</a><a href="#products">নতুন কালেকশন</a><a href="#about">আমাদের সম্পর্কে</a><a href="#cart">অর্ডার / কার্ট</a></nav>
+<section class="hero"><h1>TM ZAVRENO</h1><p><i>Wear Your Identity.</i></p><p>নারী ও পুরুষের ফ্যাশন, আপনার নিজস্ব স্টাইল</p><a href="#products"><button class="btn">কালেকশন দেখুন</button></a></section>
+<section class="wrap features"><div>🚚 সারা বাংলাদেশে ডেলিভারি<br><small>ডেলিভারি চার্জ অর্ডারের আগে নিশ্চিত করুন</small></div><div>✦ বাছাই করা ফ্যাশন<br><small>পণ্যের বিস্তারিত দেখে অর্ডার করুন</small></div><div>💬 কাস্টমার সাপোর্ট<br><small>অর্ডারের আগে আমাদের সঙ্গে কথা বলুন</small></div></section>
+<section class="wrap" id="products"><h2>আমাদের কালেকশন</h2><div class="filters"><button class="active" onclick="filter('all',this)">সব</button><button onclick="filter('men',this)">পুরুষ</button><button onclick="filter('women',this)">নারী</button></div><div class="products" id="grid"></div></section>
+<section class="wrap" id="cart"><h2>আপনার শপিং কার্ট</h2><div class="cart"><div id="items">কার্ট এখন খালি।</div><h3>মোট: ৳<span id="total">0</span></h3><p style="font-size:13px;color:#666">নমুনা পণ্য ও দাম পরিবর্তন করে আপনার আসল পণ্যের তথ্য বসাতে হবে।</p>
+<form id="checkout"><h3>অর্ডারের তথ্য</h3><input id="name" placeholder="আপনার নাম" required><input id="phone" placeholder="মোবাইল নম্বর" required><textarea id="address" placeholder="সম্পূর্ণ ডেলিভারি ঠিকানা" required rows="3"></textarea>
+<label for="payment">পেমেন্ট পদ্ধতি</label>
+<select id="payment" required style="width:100%;padding:12px;border:1px solid #ccc;border-radius:5px;font:inherit">
+<option value="Cash on Delivery">Cash on Delivery (পণ্য হাতে পেয়ে টাকা)</option>
+<option value="bKash">বিকাশ (bKash)</option>
+<option value="Nagad">নগদ (Nagad)</option>
+</select>
+<p id="paymentHelp" style="font-size:13px;color:#666;margin:0">ক্যাশ অন ডেলিভারি নির্বাচন করা হয়েছে।</p>
+<input id="trxid" placeholder="Transaction ID (বিকাশ/নগদ পেমেন্ট করলে)" />
+<button class="btn" type="submit">অর্ডার প্রস্তুত করুন</button></form><p id="notice" aria-live="polite"></p></div></section>
+<section class="wrap" id="about"><h2>TM ZAVRENO সম্পর্কে</h2><p style="text-align:center">Wear Your Identity. — নারী ও পুরুষের পোশাকের অনলাইন ব্র্যান্ড। পণ্যের ছবি, বিবরণ, সাইজ, দাম ও যোগাযোগের তথ্য শিগগিরই এখানে যোগ করুন।</p></section>
+<footer>© TM ZAVRENO · Wear Your Identity.<br>Facebook: আপনার পেজের লিংক এখানে যোগ করুন</footer>
+<script>
+const products=[
+{id:1,cat:'men',name:'পুরুষদের শার্ট (নমুনা)',price:850,desc:'এখানে আসল পণ্যের বিবরণ লিখুন'},
+{id:2,cat:'women',name:'নারীদের কুর্তি (নমুনা)',price:950,desc:'এখানে আসল পণ্যের বিবরণ লিখুন'},
+{id:3,cat:'men',name:'ক্যাজুয়াল টি-শার্ট (নমুনা)',price:450,desc:'এখানে আসল পণ্যের বিবরণ লিখুন'},
+{id:4,cat:'women',name:'নারীদের ড্রেস (নমুনা)',price:1200,desc:'এখানে আসল পণ্যের বিবরণ লিখুন'},
+{id:5,cat:'men',name:'পাঞ্জাবি (নমুনা)',price:1100,desc:'এখানে আসল পণ্যের বিবরণ লিখুন'},
+{id:6,cat:'women',name:'থ্রি-পিস (নমুনা)',price:1450,desc:'এখানে আসল পণ্যের বিবরণ লিখুন'}];
+let cart=JSON.parse(localStorage.getItem('tmz_cart')||'[]');
+function money(n){return n.toLocaleString('en-US')}
+function renderProducts(list=products){document.getElementById('grid').innerHTML=list.map(p=>`<article class="card"><div class="photo">আপনার পণ্যের ছবি<br>এখানে যোগ করুন</div><div class="info"><h3>${p.name}</h3><div>${p.desc}</div><div class="price">৳${money(p.price)}</div><button class="btn" onclick="add(${p.id})">কার্টে যোগ করুন</button></div></article>`).join('')}
+function filter(cat,el){document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));el.classList.add('active');renderProducts(cat==='all'?products:products.filter(p=>p.cat===cat))}
+function add(id){let p=products.find(x=>x.id===id),line=cart.find(x=>x.id===id);if(line)line.qty++;else cart.push({...p,qty:1});save()}
+function removeItem(id){cart=cart.filter(x=>x.id!==id);save()}
+function save(){localStorage.setItem('tmz_cart',JSON.stringify(cart));renderCart()}
+function renderCart(){document.getElementById('count').textContent=cart.reduce((s,x)=>s+x.qty,0);document.getElementById('total').textContent=money(cart.reduce((s,x)=>s+x.price*x.qty,0));document.getElementById('items').innerHTML=cart.length?cart.map(x=>`<div class="cartrow"><span>${x.name} × ${x.qty}</span><span>৳${money(x.price*x.qty)} <button onclick="removeItem(${x.id})">বাদ দিন</button></span></div>`).join(''):'কার্ট এখন খালি।'}
+const payment=document.getElementById('payment');
+payment.addEventListener('change',()=>{document.getElementById('paymentHelp').textContent=payment.value==='Cash on Delivery'?'ক্যাশ অন ডেলিভারি নির্বাচন করা হয়েছে।':payment.value+' নির্বাচন করা হয়েছে। বিক্রেতার অফিসিয়াল পেমেন্ট নম্বর নিশ্চিত করে তবেই টাকা পাঠাবেন। PIN বা OTP কাউকে দেবেন না।'});
+document.getElementById('checkout').addEventListener('submit',e=>{e.preventDefault();if(!cart.length){document.getElementById('notice').textContent='আগে কার্টে পণ্য যোগ করুন।';return}let method=payment.value;let trx=document.getElementById('trxid').value.trim();let order=`TM ZAVRENO অর্ডার অনুরোধ%0Aনাম: ${encodeURIComponent(document.getElementById('name').value)}%0Aফোন: ${encodeURIComponent(document.getElementById('phone').value)}%0Aঠিকানা: ${encodeURIComponent(document.getElementById('address').value)}%0Aপেমেন্ট: ${encodeURIComponent(method)}%0ATransaction ID: ${encodeURIComponent(trx||'প্রযোজ্য নয়')}%0Aপণ্য:%0A`+cart.map(x=>encodeURIComponent(x.name)+` × ${x.qty} = ৳${x.price*x.qty}`).join('%0A')+`%0Aমোট: ৳${cart.reduce((s,x)=>s+x.price*x.qty,0)}`;
+document.getElementById('notice').textContent='অর্ডারের খসড়া তৈরি হয়েছে। বিকাশ/নগদের বাস্তব পেমেন্ট এখনো সংযুক্ত নয়; পেমেন্ট নম্বর ও পেমেন্ট নিশ্চিতকরণ বিক্রেতার সঙ্গে যাচাই করতে হবে। PIN বা OTP কখনো শেয়ার করবেন না। অর্ডারের তথ্য কপি করে আপনার Facebook/WhatsApp-এ পাঠান: '+decodeURIComponent(order.replaceAll('%0A',' | '));});
+renderProducts();renderCart();
+</script></body></html>
